@@ -4,7 +4,10 @@ def validar_pedido(pedido: dict) -> bool:
     total = 0
     for item in pedido["itens"]:
         total += item["preco"]
-        if total < 20:
-            return False
+    if total < 20:
+        return False
     if "endereco_entrega" not in pedido:
         return False
+    if pedido["endereco_entrega"] == '':
+        return False
+    return True
